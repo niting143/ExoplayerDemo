@@ -6,6 +6,10 @@
         <variable
             name="item"
             type="com.arraigntech.mobioticstask.ui.homeActivity.HomeItem" />
+
+        <variable
+            name="model"
+            type="com.arraigntech.mobioticstask.ui.detailpage.DetailViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -30,6 +34,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_marginStart="15dp"
+                android:onClick="@{() -> model.onIMGClick()}"
                 android:src="@drawable/ic_back" />
 
             <TextView

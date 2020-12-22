@@ -6,8 +6,11 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.appcompat.app.AlertDialog
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import com.arraigntech.mobioticstask.databinding.ActivityDetailPageBinding
+import com.arraigntech.mobioticstask.ui.detailpage.DetailViewModel
 import com.arraigntech.mobioticstask.ui.detailpage.Video
 import com.arraigntech.mobioticstask.ui.detailpage.VideoDataBase
 import com.arraigntech.mobioticstask.ui.homeActivity.HomeItem
@@ -29,36 +32,28 @@ class DetailPageActivity : AppCompatActivity(), Player.EventListener {
     lateinit var binding: ActivityDetailPageBinding
     private lateinit var simpleExoplayer: SimpleExoPlayer
     lateinit var homeItem: HomeItem
+    private lateinit var modelView: DetailViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_detail_page)
+        modelView = ViewModelProvider(this).get(DetailViewModel::class.java)
+        binding.model = modelView
+        modelView.livData.observe(this, Observer {
+            if (it) {
+                onBackPressed()
+            }
+        })
         if (intent.getStringExtra(LIST_STR) != null) {
             val str = intent.getStringExtra(LIST_STR)
             val lists = Gson().fromJson(str, Array<HomeItem>::class.java).asList()
             val id = intent.getStringExtra(USER)
-            /*val newList = mutableListOf<HomeItem>()
-            for (x in lists) {
-                if (x.id != id) {
-                    val usr = HomeItem(
-                        x.description,
-                        x.id,
-                        x.thumb,
-                        x.title,
-                        x.url
-
-                    )
-                    newList.add(usr)
-                }
-
-            }*/
             for (x in lists) {
                 if (x.id == id) {
                     homeItem = x
                     binding.item = homeItem
                     break;
                 }
-
             }
             binding.recyclerRV.adapter = DetailItemAdapter(lists, homeItem.id)
             initialize()
@@ -83,6 +78,7 @@ class DetailPageActivity : AppCompatActivity(), Player.EventListener {
         AlertDialog.Builder(this)
             .setTitle("Play Video")
             .setMessage("Resume your video from where you left")
+            .setCancelable(false)
             .setPositiveButton("YES", DialogInterface.OnClickListener { dialog, which ->
                 simpleExoplayer.seekTo(obj.continueVideo)
                 simpleExoplayer.playWhenReady = true
@@ -127,7 +123,6 @@ class DetailPageActivity : AppCompatActivity(), Player.EventListener {
         }
 
     }
-
 
 
     override fun onPause() {
