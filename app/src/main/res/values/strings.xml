@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">Mobiotics Task</string>
+    <string name="google_sign_in">Google Sign In</string>
+    <string name="videos">VIDEOS</string>
+    <string name="defulat_web_client">178974686056-b2frebkm5oqod04dqmm7d9e2a7grvmdj.apps.googleusercontent.com</string>
+</resources>

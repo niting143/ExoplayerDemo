@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "178974686056",
+    "project_id": "mobiotics-task-d6d8a",
+    "storage_bucket": "mobiotics-task-d6d8a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:178974686056:android:f658bb692840344006b4dd",
+        "android_client_info": {
+          "package_name": "com.arraigntech.mobioticstask"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "178974686056-8r0l3eru94ttcrttb4e12f31fmnlbp25.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.arraigntech.mobioticstask",
+            "certificate_hash": "0b00f73b8a127000aa2aca2ea4d0eae2e4ca8e97"
+          }
+        },
+        {
+          "client_id": "178974686056-b2frebkm5oqod04dqmm7d9e2a7grvmdj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD0lAAMDHH2xNOAhT-zwxGFgN-3wVF8AB4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "178974686056-b2frebkm5oqod04dqmm7d9e2a7grvmdj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
